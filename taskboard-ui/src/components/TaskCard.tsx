@@ -1,13 +1,8 @@
 import { Card, CardContent, CardActions, Typography, Chip, IconButton, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import type { Task, TaskStatus } from '../services/taskApi';
-
-const statusConfig: Record<TaskStatus, { label: string; color: 'default' | 'warning' | 'success' }> = {
-  todo:        { label: 'Nový',       color: 'default' },
-  in_progress: { label: 'V řešení',   color: 'warning' },
-  done:        { label: 'Hotovo',     color: 'success' },
-};
+import type { Task } from '../services/taskApi';
+import { statusConfig } from '../constants/taskStatus';
 
 interface Props {
   task: Task;
