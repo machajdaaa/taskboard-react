@@ -1,15 +1,11 @@
-import { TasksApi, Configuration } from '../generated';
-import type { CreateTaskRequest, UpdateTaskRequest, TaskStatus } from '../generated/models';
+import { TasksApi } from '../generated';
+import type { CreateTaskRequest, UpdateTaskRequest, TaskStatus, Task } from '../generated';
 
-const config = new Configuration({ basePath: 'http://localhost:3000' });
-const api = new TasksApi(config);
+const api = new TasksApi();
 
 export const taskApi = {
   getAll: (status?: TaskStatus) =>
     api.listTasks(status).then(r => r.data),
-
-  getById: (id: string) =>
-    api.getTask(id).then(r => r.data),
 
   create: (data: CreateTaskRequest) =>
     api.createTask(data).then(r => r.data),
@@ -18,8 +14,7 @@ export const taskApi = {
     api.updateTask(id, data).then(r => r.data),
 
   remove: (id: string) =>
-    api.deleteTask(id).then(r => r.data),
+    api.deleteTask(id),
 };
 
-export type { CreateTaskRequest, UpdateTaskRequest, TaskStatus };
-export type { Task } from '../generated/models';
+export type { CreateTaskRequest, UpdateTaskRequest, TaskStatus, Task };

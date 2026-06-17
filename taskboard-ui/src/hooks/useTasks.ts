@@ -41,7 +41,7 @@ export const useTasks = (): UseTasksReturn => {
     await fetchTasks();
   };
 
-  const updateTask = async (id: string, data: CreateTaskRequest) => {
+  const updateTask = async (id: string, data: UpdateTaskRequest) => {
     await taskApi.update(id, data);
     await fetchTasks();
   };
